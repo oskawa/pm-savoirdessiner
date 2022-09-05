@@ -1,26 +1,43 @@
 
 # Progressif Media - Savoirdessiner
 
-Bonjour l'équipe de Progressif Media, vous trouverez sur ce répertoire Github, mon test de création de sites web à partir de votre maquette savoir dessiner.
+Bonjour l'équipe de Progressif Media, vous trouverez sur ce répertoire Github, mon test de création de sites web à partir de votre maquette "savoir dessiner".
 J'ai pris beaucoup de plaisir à la construire et j'espère que vous apprécierez également.
 
 Mon process de travail est disponible à la suite de ce readme, je vous souhaite donc une agréable lecture, je reste à votre disposition au besoin.
 
 Pour vous expliquer ma manière de travailler, je vous emmène avec moi dans un parcours chronologique de travail, réparti en 3 jours.
 
+TL:TR Vous voulez un résumé ?
+Vendredi : Perte de temps
+Samedi : Mise en place du BO + des champs
+Dimanche : Stylisation CSS
+Lundi : Readme, installation, responsive
+
+
+**Vous souhaitez voir le projet ?**
+
+Lien du site : https://savoirdessiner.maxime-eloir.fr/
+
+
+**Vous souhaitez installer le projet ?**
+
+Il y a un dossier extra dans ce projet, il s'agit d'une exportation réalisée avec duplicator, mettez la à la racine de votre projet, connectez vous à votre BDD et le tour est joué ! 
+
+
 
 ## Chronologie de travail
 ### Vendredi - 1h30
 Après réception de la maquette, j'ai commencé à chercher quel était le meilleur angle d'attaque pour réaliser à bien cette mission ! Deux options se présentaient à moi :
-Faire un simple squelette html en intégrant du php
+- Faire un simple squelette html en intégrant du php
 OU
-Créer toute une arborescence wordpress afin d'être au plus proche d'un véritable rendu de projet
+- Créer toute une arborescence wordpress afin d'être au plus proche d'un véritable rendu de projet
 
 Bien entendu... J'ai choisi la seconde solution, plus complexe à mettre en place mais tellement plus satisfaisant ! 
 
-Pour créer mon wordpress en local, j'utilise le logiciel *Local By Flywheel*, qui permet de faire une installation propre de wordpress, d'installer un certificat ssl et d'avoir une URL plus propre.
+Pour créer mon wordpress en local, j'utilise le logiciel *Local By Flywheel*, qui permet de faire une installation propre de wordpress, d'installer un certificat ssl et d'avoir une URL modifiée. Fini le "localhost/savoirdessiner", bienvenue savoirdessiner.local ! 
 Cependant, en faisant la mise à jour du logiciel, j'ai découvert qu'ils avaient implémenté un système de blueprint, permettant de sélectionner un template de site déjà créé avec les thèmes et les plugins déjà installés ! 
-Quel gain de temps ! Sauf... Sauf quand je décide de faire une installation très propre et que je passe au final 1h30 de mon temps à créer un blueprint (qui me resservira plus tard!) *au lieu de finalement travailler sur le projet...*
+Quel gain de temps ! Sauf... Sauf quand je décide de faire une installation de base et que je passe au final 1h30 de mon temps à créer un blueprint (qui me resservira plus tard!) *au lieu de finalement travailler sur le projet...*
 
 
 ### Samedi - 4h 
@@ -33,7 +50,7 @@ Bon, mon installation de wordpress et faite ! Mes extensions fétiches sont inst
 - Timber
 - Yoast SEO
 
-A ces plugins, j'ai ajouté **Woocommerce** pour répondre aux besoins du projet.
+A ces plugins, j'ai ajouté **Woocommerce** pour répondre aux besoins du projet : j'avais besoin d'afficher dans le header à droite des informations relatives à woocommerce.
 
 ---
 
@@ -45,20 +62,24 @@ A ces plugins, j'ai ajouté **Woocommerce** pour répondre aux besoins du projet
 - Création des champs ACF et remplissage des informations
 - Création des fichiers acf-block et mise en place de l'architecture HTML
 
-
-Lorsque vous vous connecterez à l'administration, prenez en note que je n'utilise pas le customizer de wordpress, mais une page d'options définis par ACF.
-Dans cette page d'options, vous y trouverez toutes les informations relatives à l'entreprise : adresse, réseaux sociaux, logo...
-
-
-* Pour permettre une plus grande flexibilité et rapidité dans mon travail, j'utilise la grille Bootstrap comme grille de référence. Je me suis rendu compte que votre maquette, une fois ramené à une largeur d'écran approximatif de 1400px, rentrait quasiment à la perfection dans une grille Bootstrap.
+* Pour permettre une plus grande flexibilité et rapidité dans mon travail, j'utilise la grille Bootstrap comme grille de référence. Je me suis rendu compte que votre maquette, une fois ramené à une largeur d'écran approximatif de 1400px, rentrait quasiment à la perfection dans une grille Bootstrap. De bootstrap, je n'utilise que le colonnage et vous comprendrez pourquoi par la suite.
 
 
 Suite à ça, je me suis attardé sur l'utilisation de l'API et la manière dont j'allais afficher les informations.
 
-- J'ai créé une fonction qui me permettra d'appeler l'API dans le block de formations, avec la particularité qu'il est possible de faire passer une variable dans cette fonction.
+- J'ai créé une fonction qui me permettra d'appeler l'API en utilisant du Curl dans le block de formations, avec la particularité qu'il est possible de faire passer une variable.
 **Cette variable est définie dans la page options > API.**
 
 Si elle est vide, aucun tri est fait, si la variable est rempli, un tri sera effectué en fonction du mot mis.
+
+```
+$array = array_filter($respJSON, function ($k) use ($filter) {
+			if (str_contains($k->title, $filter)) {
+				return $k;
+			}
+		});
+```
+
 
 Travaillant  depuis peu avec Timber et par extension, les templates TWIG, j'ai passé du temps à comprendre comment appeler une fonction et utiliser la bonne écriture.
 
@@ -76,13 +97,19 @@ Cependant, trois particularités que j'aimerais énonce :
 - J'ai toujours eu du mal avec les maquettes d'Adobe XD, les tailles typographiques me paraissent toujours beaucoup trop grosses une fois rendus en site web. C'est pourquoi pour la grande majorité des éléments typographiques, j'ai baissé de 5px ! 
 
 
+J'y ai ajouté des très légères animations sur les svg, sur les boutons, et j'ai également géré une modal d'affichage de vidéo sur le premier bloc.
 
 Mon travail en CSS fait, il m'a fallu ensuite vérifier la version mobile : 
 - Diminution de quelques tailles d'images et de texte
 - Changement de l'ordre des éléments pour faire passer l'image avant le texte
 - Centrage des éléments du footer
 - Mise en place d'un menu Hamburger
+- Gestion du sous-menu sur mobile
 
+### Lundi - 3h
+
+Une fois tout cela fait, voilà maintenant 1h que j'écris ce README, tentant d'être le plus clair possible, mais je me rends compte que je perds peut être les gens dans ces explications...
+J'ai créé un sous-somaine et une redirection pour que vous puissiez voir le site dans les meilleures conditions.
 
 ## Points d'amélioration
 
@@ -91,6 +118,17 @@ Dans l'ensemble, je pense que je ferais des animations personnalisés, un loader
 
 - Création du feuille de style par block
 - Venir diviser ma page functions.php en plus petit fichier pour mieux s'y retrouver.
+- Optimiser les fonctions dans le functions.php
+- Rajouter des animations plus intéressantes au scroll
+
+
+
+# Merci d'avoir lu jusqu'ici.
+
+Maxime Eloir
+maxime.eloir@gmail.com
+www.maxime-eloir.fr
+
 
 
 
