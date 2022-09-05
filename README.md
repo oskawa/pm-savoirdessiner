@@ -35,7 +35,7 @@ OU
 
 Bien entendu... J'ai choisi la seconde solution, plus complexe à mettre en place mais tellement plus satisfaisant ! 
 
-Pour créer mon wordpress en local, j'utilise le logiciel *Local By Flywheel*, qui permet de faire une installation propre de wordpress, d'installer un certificat ssl et d'avoir une URL modifiée. Fini le "localhost/savoirdessiner", bienvenue savoirdessiner.local ! 
+Pour créer mon wordpress en local, j'utilise le logiciel *Local By Flywheel*, qui permet de faire une installation propre de wordpress, d'installer un certificat ssl et d'avoir une URL modifiée. Fini le "localhost/savoirdessiner", bienvenue savoirdessiner.local ! --
 Cependant, en faisant la mise à jour du logiciel, j'ai découvert qu'ils avaient implémenté un système de blueprint, permettant de sélectionner un template de site déjà créé avec les thèmes et les plugins déjà installés ! 
 Quel gain de temps ! Sauf... Sauf quand je décide de faire une installation de base et que je passe au final 1h30 de mon temps à créer un blueprint (qui me resservira plus tard!) *au lieu de finalement travailler sur le projet...*
 
