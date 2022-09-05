@@ -35,8 +35,10 @@ OU
 
 Bien entendu... J'ai choisi la seconde solution, plus complexe à mettre en place mais tellement plus satisfaisant ! 
 
-Pour créer mon wordpress en local, j'utilise le logiciel *Local By Flywheel*, qui permet de faire une installation propre de wordpress, d'installer un certificat ssl et d'avoir une URL modifiée. Fini le "localhost/savoirdessiner", bienvenue savoirdessiner.local ! --
+Pour créer mon wordpress en local, j'utilise le logiciel *Local By Flywheel*, qui permet de faire une installation propre de wordpress, d'installer un certificat ssl et d'avoir une URL modifiée. Fini le "localhost/savoirdessiner", bienvenue savoirdessiner.local !
+
 Cependant, en faisant la mise à jour du logiciel, j'ai découvert qu'ils avaient implémenté un système de blueprint, permettant de sélectionner un template de site déjà créé avec les thèmes et les plugins déjà installés ! 
+
 Quel gain de temps ! Sauf... Sauf quand je décide de faire une installation de base et que je passe au final 1h30 de mon temps à créer un blueprint (qui me resservira plus tard!) *au lieu de finalement travailler sur le projet...*
 
 
@@ -56,13 +58,13 @@ A ces plugins, j'ai ajouté **Woocommerce** pour répondre aux besoins du projet
 
 
 **Il est donc temps de s'occuper à la configuration du thème :**
-- Enregistrement de styles/scripts utiles *
+- Enregistrement de styles/scripts utiles [^1]
 - Enregistrement de menu dans le functions.php
 - Enregistrement des blocs ACF
 - Création des champs ACF et remplissage des informations
 - Création des fichiers acf-block et mise en place de l'architecture HTML
 
-* Pour permettre une plus grande flexibilité et rapidité dans mon travail, j'utilise la grille Bootstrap comme grille de référence. Je me suis rendu compte que votre maquette, une fois ramené à une largeur d'écran approximatif de 1400px, rentrait quasiment à la perfection dans une grille Bootstrap. De bootstrap, je n'utilise que le colonnage et vous comprendrez pourquoi par la suite.
+[^1]: Pour permettre une plus grande flexibilité et rapidité dans mon travail, j'utilise la grille Bootstrap comme grille de référence. Je me suis rendu compte que votre maquette, une fois ramené à une largeur d'écran approximatif de 1400px, rentrait quasiment à la perfection dans une grille Bootstrap. De bootstrap, je n'utilise que le colonnage et vous comprendrez pourquoi par la suite.
 
 
 Suite à ça, je me suis attardé sur l'utilisation de l'API et la manière dont j'allais afficher les informations.
