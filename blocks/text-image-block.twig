@@ -1,0 +1,31 @@
+{#
+/**
+ * Block Name: Text image block
+ * image
+ * title_text
+ * description_text
+ * call_to_action
+ * inverted
+ * 
+ */
+#}
+
+
+<section class="text-image">
+	<div class="container">
+		<div class="row text-image__row">
+		
+			<div class=" col-12 {% if fields.inverted %} order-lg-2 order-1 col-lg-6 {% else %} col-lg-7{% endif %}">
+				<img class="text-image__img"{% if not fields.inverted %} style="padding-left: 2.6rem; padding-right: 6rem;" {% endif %} src="{{fields.image.url}}" alt=""></div>
+			<div class="col-lg-5 col-12 {% if fields.inverted %} order-lg-1 order-2 offset-lg-1 {% endif %}">
+				<h3 class="text-image__title">{{fields.title_text}}</h3>
+				{% if fields.description_text %}
+				<hr class="text-image__separator">
+				<p class="text-image__paragraph">{{fields.description_text}}</p>				
+				{% endif %}				
+				
+
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,33 @@
+{#
+/**
+ * Block Name: Icons list block
+ *
+ * section_title
+ * icons_list (Repeater)
+ *  icon (image)
+ *  icon_title
+ *  icon_text
+ */
+#}
+
+
+<section class="icons-list">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="icons-list__title">{{fields.section_title}}</h3>
+			</div>
+			{% for iconSingle in fields.icons_list %}
+				<div class="col-lg-4 col-12 icons-list__single">
+					<img class="icons-list__single-img" src="{{ Image(iconSingle.icon).src }}"/>
+					<h4 class="icons-list__single-title">{{ iconSingle.icon_title }}</h4>
+					<p class="icons-list__single-text">{{ iconSingle.icon_text }}</p>
+				
+			</div>
+
+
+		{% endfor %}
+
+
+	</div>
+</div></section>

@@ -1,0 +1,47 @@
+{#
+/**
+ * Block Name: Hero block
+ *
+ * background_color
+ * subtitle
+ * section_title
+ * media (type File)
+ */
+#}
+
+
+<section class="hero" style="background-color:{{fields.background_color}}">
+    <div class="container">
+        <div class="row hero-row">
+            <div class="col-12 col-lg-6">
+            <div class="hero-content">
+                <h3 class="hero-content_subtitle">{{fields.subtitle}}</h3>
+                <h1 class="hero-content_title">{{fields.section_title}}</h1>
+            </div>
+                {% if fields.call_to_action %}
+                <a class="btn-fill hero-content_link" href="{{fields.call_to_action.url}}">{{fields.call_to_action.title}}</a>
+                {% endif %}
+            </div>
+            {% if fields.media or fields.video_thumbnail %}
+            <div class="col-12 offset-lg-1 col-lg-5 hero-media">
+            <pre>
+                {{ dump(fields.media) }}
+            </pre>
+            {% if fields.choice_media == "image" %}
+            
+            <img class="hero-media__image" src="{{fields.media.url}}" alt="">
+            {% else  %}
+           
+            <div class="hero-media__video" data-src="{{fields.video_url}}">
+              <img class="hero-media__image" src="{{fields.video_thumbnail.url}}" alt="">
+              <div class="hero-media__video-btn">{{ function('file_get_contents', stylesheet_directory ~'/play-btn.svg') }}</div>
+            </div>
+            {% endif %}
+            
+          
+            
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

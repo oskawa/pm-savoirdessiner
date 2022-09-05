@@ -1,0 +1,13 @@
+/* Compenser les styles de l'éditeur */
+.editor-styles-wrapper .plugin p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.editor-styles-wrapper .plugin p:last-child {
+    margin-bottom: 0;
+}
+
+.editor-styles-wrapper .wp-block {
+    max-width: 100% !important;
+}

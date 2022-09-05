@@ -1,0 +1,64 @@
+{#
+/**
+ * Block Name: Course list
+ *
+ * title_courses
+ * subtitle_courses
+ */
+#}
+
+
+{% set apiResult = function(['StarterSite','apiCall'], 'https://jsonplaceholder.typicode.com/posts', options.filter_word) %}
+<section class="courses">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 courses-inner">
+				<h3 class="courses-title">{{fields.title_courses}}</h3>
+				<h4 class="courses-subtitle">{{fields.subtitle_courses}}</h4>
+			</div>
+		</div>
+		<div class="row courses-list">
+
+			{% for post in formations %}
+
+				<div class="col-12 col-lg-4 courses-single">
+					<div class="courses-single__content">
+						<img class="courses-single__image" src="{{ post.thumbnail.src }}"/>
+						<div class="courses-single__informations">
+
+							<div class="courses-single__informations-single {{post.level}}">
+								{{ function('file_get_contents', stylesheet_directory ~'/competences.svg') }}
+								{% if post.level == "all" %}
+									Tous niveaux
+								{% elseif post.level == "advanced" %}
+									Niveau avancé
+								{% else %}
+									Niveau expert
+								{% endif %}
+							</div>
+							<div class="courses-single__informations-single">{{ function('file_get_contents', stylesheet_directory ~'/clock.svg') }}{{post.time_course}}h</div>
+							<div class="courses-single__informations-single">{{post.number_courses}}
+								cours</div>
+
+						</div>
+
+						<h2 class="courses-single__title">{{apiResult[loop.index - 1].title}}</h2>
+
+
+						<p class="courses-single__description">{{ apiResult[loop.index - 1].body|length > 100 ? apiResult[loop.index - 1].body|slice(0, 100) ~ '...' : apiResult[loop.index - 1].body  }}</p>
+						<a class="btn-fill courses-single__link" href="{{post.link}}">Commencer</a>
+					</div>
+				</div>
+
+
+			{% endfor %}
+			
+			{% if formations|length > 2 %}
+				<div class="col-12 show-more">
+					<a href="#" class="btn-fill show-more__button">Voir tous les cours</a>
+				</div>
+			{% endif %}
+		</div>
+
+	</div>
+</section>

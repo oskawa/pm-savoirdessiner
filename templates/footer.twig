@@ -1,0 +1,96 @@
+
+<section class="video-modal">
+
+    <!-- Modal Content Wrapper -->
+    <div 
+         id="video-modal-content" class="video-modal-content"
+     >
+      
+       <!-- iframe -->
+       <iframe 
+          id="youtube" 
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          allow="autoplay" 
+          allowfullscreen 
+          src=
+        ></iframe>
+
+        <a 
+        	href="#" 
+        	class="close-video-modal" 
+        >
+        	<!-- X close video icon -->
+          <svg 
+            version="1.1" 
+            xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0"
+            y="0"
+            viewBox="0 0 32 32" 
+            style="enable-background:new 0 0 32 32;" 
+            xml:space="preserve" 
+            width="24" 
+            height="24" 
+          >
+
+            <g id="icon-x-close">
+                <path fill="#ffffff" d="M30.3448276,31.4576271 C29.9059965,31.4572473 29.4852797,31.2855701 29.1751724,30.980339 L0.485517241,2.77694915 C-0.122171278,2.13584324 -0.104240278,1.13679247 0.52607603,0.517159487 C1.15639234,-0.102473494 2.17266813,-0.120100579 2.82482759,0.477288136 L31.5144828,28.680678 C31.9872448,29.1460053 32.1285698,29.8453523 31.8726333,30.4529866 C31.6166968,31.0606209 31.0138299,31.4570487 30.3448276,31.4576271 Z" id="Shape"></path>
+                <path fill="#ffffff" d="M1.65517241,31.4576271 C0.986170142,31.4570487 0.383303157,31.0606209 0.127366673,30.4529866 C-0.12856981,29.8453523 0.0127551942,29.1460053 0.485517241,28.680678 L29.1751724,0.477288136 C29.8273319,-0.120100579 30.8436077,-0.102473494 31.473924,0.517159487 C32.1042403,1.13679247 32.1221713,2.13584324 31.5144828,2.77694915 L2.82482759,30.980339 C2.51472031,31.2855701 2.09400353,31.4572473 1.65517241,31.4576271 Z" id="Shape"></path>
+            </g>
+
+          </svg>
+        </a>
+
+    </div><!-- end modal content wrapper -->
+
+
+    <!-- clickable overlay element -->
+    <div class="overlay"></div>
+
+
+</section>
+
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-lg-2 footer-left">
+				{% if (options.logo_secondaire.url) %}
+					{{ function('file_get_contents', options.logo_secondaire.url) }}
+				{% endif %}
+				<a class="footer-left__mail" href="mailto:{{options.mail}}">{{options.mail}}</a>
+
+				{% if (options.social_list) %}
+					<div class="footer-socials">
+						<ul class="footer-socials__list">
+							{% for social in options.social_list %}
+								<li class="footer-socials__single">
+									<a href="{{social.social_link}}">{{ function('file_get_contents', social.social_icon.url) }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+
+			</div>
+			<div class="offset-lg-1"></div>
+
+			{% for school in options.schools_list %}
+				<div class="col-lg-3 col-12 school-content">
+					<div class="school-content__img {{school.school_color}}">
+						{{ function('file_get_contents', stylesheet_directory ~'/logo.svg') }}
+					</div>
+					<div class="school-content__container">
+
+						<h4 class="school-content__title">{{school.school_name}}</h4>
+						<p class="school-content__adress">{{school.street}}{{school.postal_code}}</p>
+						<a class="school-content__phone" href="tel:{{school.phone_number}}">{{school.phone_number}}</a>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+</footer>

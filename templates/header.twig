@@ -1,0 +1,41 @@
+<nav class="d-none d-lg-block" id="is-computer">
+	<div class="container ">
+		<div class="row">
+			<div class="col-lg-1 header-logo">
+				{% if (options.logo.url) %}
+					{{ function('file_get_contents', options.logo.url) }}
+				{% endif %}
+			</div>
+			<div class="col-lg-6 header-menu ">
+				{% include "menu.twig" with {'items': menu.get_items} %}
+			</div>
+			<div class="col-lg-5 ">
+			{% do action('mytheme_header_action') %}
+			</div>
+		</div>
+	</div>
+</nav>
+<nav class="d-lg-none d-block" id="is-mobile">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="mobile-menu">
+				{% include "menu.twig" with {'items': menu.get_items} %}
+				{% do action('mytheme_header_action') %}
+			</div>
+			<div
+				class="col-6 is-mobile__logo">{% if (options.logo.url) %}
+					{{ function('file_get_contents', options.logo.url) }}
+				{% endif %} 
+			</div>
+			<div class="col-6 is-mobile__menu text-right">
+				<button class="hamburger hamburger--collapse" type="button">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+</nav>
+<!-- #nav -->
