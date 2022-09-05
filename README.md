@@ -9,10 +9,10 @@ Mon process de travail est disponible à la suite de ce readme, je vous souhaite
 Pour vous expliquer ma manière de travailler, je vous emmène avec moi dans un parcours chronologique de travail, réparti en 3 jours.
 
 TL:TR Vous voulez un résumé ?
-Vendredi : Perte de temps
-Samedi : Mise en place du BO + des champs
-Dimanche : Stylisation CSS
-Lundi : Readme, installation, responsive
+- Vendredi : Perte de temps
+- Samedi : Mise en place du BO + des champs
+- Dimanche : Stylisation CSS
+- Lundi : Readme, installation, responsive
 
 
 **Vous souhaitez voir le projet ?**
